@@ -1,38 +1,82 @@
-Author: Md. Shahriar Imtiaz
-
-Project Showcase: A deep learning-based project for classifying satellite imagery into environmental categories using convolutional neural networks (CNNs). This demonstrates end-to-end data preparation, model training, and evaluation with TensorFlow on a Kaggle dataset.
-
 Overview
-This project uses transfer learning and data augmentation to classify 5,631 RGB satellite images (224x224 pixels) from the Kaggle Satellite Image Classification Dataset. Ideal for climate studies and urban planning.
+
+This project utilizes transfer learning and data augmentation to classify 5,631 RGB satellite images (224x224 pixels) from the Kaggle Satellite Image Classification Dataset. The dataset is ideal for climate studies, urban planning, and environmental monitoring.
+
 Classes Breakdown:
 
 Cloudy: 1,500 images
+
 Desert: 1,131 images
+
 Green Area: 1,500 images
+
 Water: 1,500 images
 
-Split: 80% train (4,504), 10% val (563), 10% test (564).
-Model: TensorFlow/Keras CNN with categorical loss; batch size 32; GPU-optimized.
+Data Split:
+
+Training: 80% (4,504 images)
+
+Validation: 10% (563 images)
+
+Test: 10% (564 images)
+
+Model:
+
+Architecture: TensorFlow/Keras CNN
+
+Loss Function: Categorical Cross-Entropy
+
+Batch Size: 32
+
+Optimization: GPU-optimized
+
 Tech Stack
 
-Python 3.12 | TensorFlow/Keras, NumPy, Matplotlib | Kaggle API, Google Colab (T4 GPU)
+Python: 3.12
+
+Libraries: TensorFlow/Keras, NumPy, Matplotlib
+
+Tools: Kaggle API, Google Colab (T4 GPU)
 
 Project Structure
 
-Satellite_Image_Classification.ipynb: Dataset download, EDA, and stratified splitting.
-Satellite Image HeatMap.ipynb: Data loading, preprocessing, batch verification, and training setup.
+Satellite_Image_Classification.ipynb: Dataset download, exploratory data analysis (EDA), and stratified splitting.
+
+Satellite_Image_HeatMap.ipynb: Data loading, preprocessing, batch verification, and training setup.
 
 How It Works
+1. Acquire & Explore
 
-Acquire & Explore: Download ~21.5 MB dataset via Kaggle API; summarize structure.
-Preprocess: Shuffle/split per class; load as TF datasets (shuffled, batched).
-Train & Evaluate: CNN with cross-entropy; monitor val accuracy; visualize predictions/confusion matrices.
+The dataset (~21.5 MB) is downloaded using the Kaggle API.
 
-Example batch:
+The structure of the dataset is summarized to understand the data distribution.
 
-Images: (32, 224, 224, 3) | Labels: (32, 4)
+2. Preprocess
+
+The data is shuffled and split per class to ensure a balanced training set.
+
+The dataset is loaded as TensorFlow datasets, shuffled and batched for efficient training.
+
+3. Train & Evaluate
+
+A CNN model is trained using categorical cross-entropy loss.
+
+Validation accuracy is monitored, and predictions are visualized along with confusion matrices.
+
+Example Batch
+
+Images Shape: (32, 224, 224, 3)
+
+Labels Shape: (32, 4)
+
 Results & Insights
 
-~90%+ val accuracy; stratified splits handle imbalance.
+Validation Accuracy: ~90%+
 
-Extensions: Grad-CAM heatmaps, TensorFlow Lite deployment.
+Data Imbalance Handling: Stratified splits effectively manage class imbalance.
+
+Future Extensions
+
+Grad-CAM Heatmaps for visualizing class-specific regions of interest in the images.
+
+TensorFlow Lite Deployment for mobile or edge device deployment.
